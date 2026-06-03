@@ -595,21 +595,51 @@ document.getElementById('clear-sessions-btn')?.addEventListener('click', () => {
 const internForm = document.getElementById('internship-form');
 const internModal = document.getElementById('intern-modal');
 const closeInternModal = document.getElementById('close-intern-modal');
+const internSubmitBtn = document.getElementById('internship-submit');
+const internSubmitText = document.getElementById('intern-submit-text');
+const resumeInput = document.getElementById('intern-resume');
+const resumeLabelText = document.getElementById('resume-label-text');
 
 if (internForm) {
-  internForm.addEventListener('submit', e => {
+  internForm.addEventListener('submit', async e => {
     e.preventDefault();
+
     if (!internForm.checkValidity()) {
       internForm.reportValidity();
       return;
     }
+
+    // File size guard (5MB)
+    if (resumeInput && resumeInput.files[0] && resumeInput.files[0].size > 5 * 1024 * 1024) {
+      alert('File size exceeds 5MB. Please upload a smaller PDF file.');
+      return;
+    }
+
+    if (internSubmitBtn) internSubmitBtn.disabled = true;
+    if (internSubmitText) internSubmitText.textContent = 'Submitting…';
+
+    try {
+      const formData = new FormData(internForm);
+
+      await fetch(internForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+    } catch (err) {
+      console.error('Submission failed:', err);
+    }
+
     if (internModal) {
       internModal.removeAttribute('hidden');
       document.body.style.overflow = 'hidden';
     }
+    
     internForm.reset();
-    const resumeLabel = document.getElementById('resume-label-text');
-    if (resumeLabel) resumeLabel.textContent = 'Upload Resume (PDF) *';
+    if (resumeLabelText) resumeLabelText.textContent = 'Upload Resume (Optional, PDF)';
+    
+    if (internSubmitBtn) internSubmitBtn.disabled = false;
+    if (internSubmitText) internSubmitText.textContent = 'Apply for Internship →';
   });
 }
 
@@ -631,12 +661,12 @@ if (internModal) {
 }
 
 /* ---- FILE UPLOAD LABEL UPDATE ---- */
-const resumeInput = document.getElementById('intern-resume');
-const resumeLabelText = document.getElementById('resume-label-text');
 if (resumeInput && resumeLabelText) {
   resumeInput.addEventListener('change', () => {
     if (resumeInput.files && resumeInput.files[0]) {
       resumeLabelText.textContent = '✓ ' + resumeInput.files[0].name;
+    } else {
+      resumeLabelText.textContent = 'Upload Resume (Optional, PDF)';
     }
   });
 }

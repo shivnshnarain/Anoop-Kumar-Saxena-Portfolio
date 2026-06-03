@@ -784,7 +784,15 @@ function App() {
         </div>
 
         <div className="internship-form-wrap" data-animate="fade-right">
-          <form className="internship-form" id="internship-form" novalidate>
+          <form className="internship-form" id="internship-form" 
+            action="https://formsubmit.co/narainshivansh4@gmail.com"
+            method="POST"
+            encType="multipart/form-data"
+            novalidate>
+            <input type="hidden" name="_subject" value="New Internship Application Received" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_autoresponse" value="Thank you for applying for an internship with Advocate Anoop Kumar Saxena. We have received your application and will review your profile. We will contact you within 3–5 business days if your profile matches our requirements." />
             <h3>Apply for Internship</h3>
             <p className="form-intro">Open for LL.B. students (1st–5th year) and fresh law graduates. Limited seats — Apply
               now.</p>
@@ -797,6 +805,8 @@ function App() {
               <div className="form-group">
                 <label htmlFor="intern-phone">Phone Number *</label>
                 <input type="tel" id="intern-phone" name="phone" placeholder="+91 XXXXX XXXXX" required
+                  pattern="^(?:\+91|91)?[6-9]\d{9}$"
+                  title="Please enter a valid 10-digit Indian phone number"
                   autoComplete="tel" />
               </div>
             </div>
@@ -848,12 +858,12 @@ function App() {
             <div className="form-group">
               <label htmlFor="intern-resume" className="file-label">
                 <span className="file-icon">📄</span>
-                <span id="resume-label-text">Upload Resume (PDF) *</span>
-                <input type="file" id="intern-resume" name="resume" accept=".pdf,.doc,.docx" className="file-input" />
+                <span id="resume-label-text">Upload Resume (Optional, PDF)</span>
+                <input type="file" id="intern-resume" name="attachment" accept=".pdf" className="file-input" />
               </label>
             </div>
             <button type="submit" className="btn btn-outline-light btn-full" id="internship-submit">
-              Apply for Internship →
+              <span id="intern-submit-text">Apply for Internship →</span>
             </button>
           </form>
         </div>
