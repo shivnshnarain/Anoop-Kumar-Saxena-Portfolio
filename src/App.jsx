@@ -65,7 +65,6 @@ function App() {
       <div className="legal-particle" style={{"--x":"85%","--y":"15%","--d":"8s"}}>§</div>
       <div className="legal-particle" style={{"--x":"5%","--y":"70%","--d":"7s"}}>⚖</div>
       <div className="legal-particle" style={{"--x":"90%","--y":"75%","--d":"5s"}}>§</div>
-      <div className="legal-particle" style={{"--x":"50%","--y":"5%","--d":"9s"}}>⚖</div>
       <div className="legal-particle" style={{"--x":"30%","--y":"85%","--d":"6.5s"}}>§</div>
     </div>
     <div className="hero-grid-overlay"></div>
