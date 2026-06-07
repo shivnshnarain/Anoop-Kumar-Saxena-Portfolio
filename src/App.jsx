@@ -489,10 +489,10 @@ function App() {
             <li>✓ Juvenile &amp; Family Counseling</li>
             <li>✓ Internship Guidance</li>
             <li>✓ Personal Guidance Sessions</li>
-            <li>✓ Google Meet / Zoom Session</li>
+            <li>✓ Zoom Session</li>
             <li>✓ Confirmation after Payment</li>
           </ul>
-          <div className="compare-fee">₹1,000 – ₹2,000</div>
+          <div className="compare-fee">₹999 – ₹1,999</div>
           <a href="#paid-counseling-form" className="btn btn-primary compare-btn">Book Paid Session</a>
         </div>
         <div className="compare-divider">
@@ -556,33 +556,33 @@ function App() {
           <div className="price-card" id="price-basic">
             <div className="price-icon">📋</div>
             <h4>Basic Counseling Session</h4>
-            <div className="price-amount">₹1,000</div>
+            <div className="price-amount">₹999</div>
             <p>One focused session covering career options, legal awareness, student guidance or personal legal queries.</p>
             <ul className="price-features">
-              <li>✓ 30-minute Google Meet / Zoom</li>
+              <li>✓ 45 Minutes Zoom Meeting</li>
               <li>✓ Career path in law</li>
               <li>✓ Legal awareness queries</li>
               <li>✓ Student mentorship</li>
               <li>✓ Confirmation after payment</li>
             </ul>
-            <button className="btn btn-outline-dark price-select" data-plan="Basic Counseling — ₹1,000" data-fee="1000">Select Plan</button>
+            <button className="btn btn-outline-dark price-select" data-plan="Basic Counseling — ₹999" data-fee="999">Select Plan</button>
           </div>
 
           <div className="price-card price-card-premium" id="price-detailed">
             <div className="price-badge">Recommended</div>
             <div className="price-icon">⚖</div>
             <h4>Detailed Professional Guidance</h4>
-            <div className="price-amount">₹2,000</div>
+            <div className="price-amount">₹1,999</div>
             <p>In-depth session with comprehensive guidance — ideal for law graduates, aspirants, families &amp; individuals needing detailed legal clarity.</p>
             <ul className="price-features">
-              <li>✓ 60-minute dedicated session</li>
+              <li>✓ 2 hours dedicated session</li>
               <li>✓ Detailed career roadmap</li>
               <li>✓ Juvenile &amp; family counseling</li>
               <li>✓ Internship &amp; bar enrollment guidance</li>
               <li>✓ Written summary shared post-session</li>
               <li>✓ Confirmation after payment</li>
             </ul>
-            <button className="btn btn-primary price-select" data-plan="Detailed Guidance — ₹2,000" data-fee="2000">Select Plan</button>
+            <button className="btn btn-primary price-select" data-plan="Detailed Guidance — ₹1,999" data-fee="1999">Select Plan</button>
           </div>
 
           {/* Services list */}
@@ -599,7 +599,7 @@ function App() {
         {/* Booking Form */}
         <div className="consult-form-wrap" data-animate="fade-right">
           <form id="consultation-form" className="consult-form"
-            action="https://formsubmit.co/advanoopsaxena@gmail.com"
+            action="https://formsubmit.co/06c2f97f7d9131e222dc60fa31a780ea"
             method="POST" novalidate>
 
             <input type="hidden" name="_subject" value="New Paid Counseling Booking" />
@@ -667,7 +667,6 @@ function App() {
               <div className="form-group">
                 <label htmlFor="consult-platform">Platform</label>
                 <select id="consult-platform" name="Platform">
-                  <option>Google Meet</option>
                   <option>Zoom</option>
                   <option>Phone Call</option>
                 </select>
@@ -785,13 +784,15 @@ function App() {
 
         <div className="internship-form-wrap" data-animate="fade-right">
           <form className="internship-form" id="internship-form" 
-            action="https://formsubmit.co/fe8b840c0e2e8f6a5b4c27b397ab8ad8"
+            action="https://formsubmit.co/06c2f97f7d9131e222dc60fa31a780ea"
             method="POST"
             encType="multipart/form-data"
             novalidate>
             <input type="hidden" name="_subject" value="New Internship Application Received" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_honey" value="" style={{display: 'none'}} />
+            <input type="hidden" name="_next" value="https://advanoopkumarsaxena.vercel.app/" />
             <input type="hidden" name="_autoresponse" value="Thank you for applying for an internship with Advocate Anoop Kumar Saxena. We have received your application and will review your profile. We will contact you within 3–5 business days if your profile matches our requirements." />
             <h3>Apply for Internship</h3>
             <p className="form-intro">Open for LL.B. students (1st–5th year) and fresh law graduates. Limited seats — Apply
@@ -1092,9 +1093,9 @@ function App() {
           <form
             id="hire-form"
             className="hire-form"
-            action="https://formsubmit.co/advanoopsaxena@gmail.com"
+            action="https://formsubmit.co/06c2f97f7d9131e222dc60fa31a780ea"
             method="POST"
-            enctype="multipart/form-data"
+            encType="multipart/form-data"
             novalidate>
 
             <input type="hidden" name="_subject" value="New Legal Case Inquiry" />
@@ -1208,7 +1209,7 @@ function App() {
           </button>
           <div className="faq-answer">
             <p>Simply fill out the consultation booking form on this website, select your preferred plan (General at
-              ₹1,000 or Detailed Counseling at ₹2,000), choose a date and time slot, and submit. You will receive a
+              ₹999 or Detailed Counseling at ₹1,999), choose a date and time slot, and submit. You will receive a
               confirmation and meeting link via email and WhatsApp within 2 hours.</p>
           </div>
         </div>
@@ -1218,7 +1219,7 @@ function App() {
             <span className="faq-arrow">+</span>
           </button>
           <div className="faq-answer">
-            <p>We use Google Meet and Zoom for online consultations. You will receive a meeting link in advance. The
+            <p>We use Zoom for online consultations. You will receive a meeting link in advance. The
               consultation can be attended from any device — smartphone, tablet, or computer — with an internet
               connection.</p>
           </div>
@@ -1229,8 +1230,8 @@ function App() {
             <span className="faq-arrow">+</span>
           </button>
           <div className="faq-answer">
-            <p>General Consultation (₹1,000) is a 30–45 minute session for single legal queries with immediate
-              actionable guidance. Detailed Legal Counseling (₹2,000) is a 60–90 minute in-depth session that includes
+            <p>General Consultation (₹999) is a 45 Minutes Zoom Meeting for single legal queries with immediate
+              actionable guidance. Detailed Legal Counseling (₹1,999) is a 2-hour dedicated session that includes
               document review (up to 5 documents), comprehensive legal strategy, and a follow-up query window within 48
               hours.</p>
           </div>
@@ -1479,9 +1480,9 @@ function App() {
         <div className="pay-plan-card">
           <div className="pay-plan-icon-lg" id="pay-plan-icon">📋</div>
           <h4 id="pay-plan-name">Basic Counseling Session</h4>
-          <div className="pay-big-amount"><span id="pay-amount-display">₹1,000</span></div>
+          <div className="pay-big-amount"><span id="pay-amount-display">₹999</span></div>
           <ul className="pay-plan-perks" id="pay-plan-perks">
-            <li>✓ 30-minute Google Meet / Zoom session</li>
+            <li>✓ 45 Minutes Zoom Meeting</li>
             <li>✓ Career guidance &amp; legal awareness</li>
             <li>✓ Confirmation sent after payment</li>
           </ul>
@@ -1498,7 +1499,7 @@ function App() {
             <div id="upi-qr-code"></div>
           </div>
           <div className="pay-qr-meta">
-            <div className="pay-qr-amount"><strong id="qr-amount-label">₹1,000</strong><span>Counseling Session</span></div>
+            <div className="pay-qr-amount"><strong id="qr-amount-label">₹999</strong><span>Counseling Session</span></div>
             <div className="pay-upi-id-row">
               <span className="pay-upi-label">UPI ID</span>
               <span className="pay-upi-value" id="upi-id-text">saxenaanoop11@okaxis</span>
@@ -1511,7 +1512,7 @@ function App() {
               <span className="pay-app">Paytm</span>
               <span className="pay-app">BHIM</span>
             </div>
-            <div className="pay-amount-note">Amount: <strong id="amount-reminder">₹1,000</strong></div>
+            <div className="pay-amount-note">Amount: <strong id="amount-reminder">₹999</strong></div>
           </div>
         </div>
         <button className="btn btn-primary btn-full" id="paid-confirm-btn" style={{"margin-top":"1.5rem"}}>✓ I Have Paid — Enter Details</button>
@@ -1689,8 +1690,8 @@ function App() {
               <div className="form-group">
                 <label>Session Plan</label>
                 <select id="admin-plan">
-                  <option>Basic Counseling — ₹1,000</option>
-                  <option>Detailed Guidance — ₹2,000</option>
+                  <option>Basic Counseling — ₹999</option>
+                  <option>Detailed Guidance — ₹1,999</option>
                 </select>
               </div>
             </div>
@@ -1716,7 +1717,6 @@ function App() {
               <div className="form-group">
                 <label>Platform</label>
                 <select id="admin-platform">
-                  <option>Google Meet</option>
                   <option>Zoom</option>
                 </select>
               </div>
@@ -1727,7 +1727,7 @@ function App() {
             </div>
             <div className="form-group">
               <label>Meeting / Join Link *</label>
-              <input type="url" id="admin-meeting-link" placeholder="https://meet.google.com/xxx-xxx-xxx" />
+              <input type="url" id="admin-meeting-link" placeholder="https://zoom.us/j/xxxxxxxxxx" />
             </div>
             <div className="form-group">
               <label>Access Code (leave blank to auto-generate)</label>

@@ -138,13 +138,13 @@ const ADMIN_HASH = 'QWR2U2F4ZW5hQDIwMjQ=';
 
 // Plan definitions
 const PLAN_DATA = {
-  'Basic Counseling \u2014 \u20b91,000': {
-    fee: 1000, icon: '\uD83D\uDCCB',
-    perks: ['30-minute Google Meet / Zoom session', 'Career guidance in law', 'Legal awareness session', 'Confirmation after payment']
+  'Basic Counseling \u2014 \u20b9999': {
+    fee: 999, icon: '\uD83D\uDCCB',
+    perks: ['45 Minutes Zoom Meeting', 'Career guidance in law', 'Legal awareness session', 'Confirmation after payment']
   },
-  'Detailed Guidance \u2014 \u20b92,000': {
-    fee: 2000, icon: '\u2696',
-    perks: ['60-minute dedicated session', 'Comprehensive career roadmap', 'Juvenile & family counseling', 'Written summary shared post-session', 'Confirmation after payment']
+  'Detailed Guidance \u2014 \u20b91,999': {
+    fee: 1999, icon: '\u2696',
+    perks: ['2 hours dedicated session', 'Comprehensive career roadmap', 'Juvenile & family counseling', 'Written summary shared post-session', 'Confirmation after payment']
   }
 };
 
@@ -158,9 +158,9 @@ let _qrBuilt = false;
 document.querySelectorAll('.price-select').forEach(btn => {
   btn.addEventListener('click', () => {
     const rawPlan = btn.getAttribute('data-plan');
-    const fee     = parseInt(btn.getAttribute('data-fee')) || 1000;
+    const fee     = parseInt(btn.getAttribute('data-fee')) || 999;
     // Find matching plan data
-    const planKey = Object.keys(PLAN_DATA).find(k => k.includes(fee + ',000') || rawPlan.includes(fee));
+    const planKey = Object.keys(PLAN_DATA).find(k => k.includes(fee.toLocaleString('en-IN')) || rawPlan.includes(fee.toString()));
     const data    = PLAN_DATA[planKey] || { fee, icon: '📋', perks: [] };
 
     _currentPlan = { name: rawPlan, fee, icon: data.icon };
@@ -187,7 +187,7 @@ if (consultSubmitBtn) {
     e.preventDefault();
     const selectedPlan = document.getElementById('selected-plan')?.value;
     if (!selectedPlan) {
-      alert('Please select a counseling plan first (₹1,000 or ₹2,000) to proceed with payment.');
+      alert('Please select a counseling plan first (₹999 or ₹1,999) to proceed with payment.');
       return;
     }
     _currentPlan.name = selectedPlan;
@@ -243,7 +243,7 @@ function buildUPIQR() {
   if (!container) return;
   container.innerHTML = '';
   // Use plan-specific note so it appears in bank statement
-  const note = _currentPlan.fee === 2000
+  const note = _currentPlan.fee === 1999
     ? 'Detailed%20Counseling'
     : 'Basic%20Counseling';
   const upiURL = `upi://pay?pa=${UPI_ID}&pn=${UPI_NAME}&am=${_currentPlan.fee}&cu=INR&tn=${note}`;
@@ -305,7 +305,7 @@ document.getElementById('utr-form')?.addEventListener('submit', async e => {
   );
 
   try {
-    await fetch('https://formsubmit.co/advanoopsaxena@gmail.com', {
+    await fetch('https://formsubmit.co/ajax/06c2f97f7d9131e222dc60fa31a780ea', {
       method: 'POST',
       body: fd,
       headers: { 'Accept': 'application/json' }
@@ -620,8 +620,9 @@ if (internForm) {
 
     try {
       const formData = new FormData(internForm);
+      const ajaxUrl = internForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
 
-      await fetch(internForm.action, {
+      await fetch(ajaxUrl, {
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
@@ -751,7 +752,11 @@ if (hireDateInput) hireDateInput.setAttribute('min', today);
 /* ---- KEYBOARD: Close modals on Escape ---- */
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    [bookingModal, internModal].forEach(modal => {
+    const paymentModal = document.getElementById('payment-modal');
+    const meetingModal = document.getElementById('meeting-modal');
+    const internModal = document.getElementById('intern-modal');
+    const adminPanel = document.getElementById('admin-panel');
+    [paymentModal, meetingModal, internModal, adminPanel].forEach(modal => {
       if (modal && !modal.hasAttribute('hidden')) {
         modal.setAttribute('hidden', '');
         document.body.style.overflow = '';
@@ -821,9 +826,10 @@ if (hireForm) {
 
     try {
       const formData = new FormData(hireForm);
+      const ajaxUrl = hireForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
 
       // Submit to FormSubmit.co (first submission requires email activation)
-      const response = await fetch(hireForm.action, {
+      const response = await fetch(ajaxUrl, {
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }

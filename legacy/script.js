@@ -137,13 +137,13 @@ const ADMIN_HASH = 'QWR2U2F4ZW5hQDIwMjQ=';
 
 // Plan definitions
 const PLAN_DATA = {
-  'Basic Counseling \u2014 \u20b91,000': {
-    fee: 1000, icon: '\uD83D\uDCCB',
-    perks: ['30-minute Google Meet / Zoom session', 'Career guidance in law', 'Legal awareness session', 'Confirmation after payment']
+  'Basic Counseling \u2014 \u20b9999': {
+    fee: 999, icon: '\uD83D\uDCCB',
+    perks: ['45 Minutes Zoom Meeting', 'Career guidance in law', 'Legal awareness session', 'Confirmation after payment']
   },
-  'Detailed Guidance \u2014 \u20b92,000': {
-    fee: 2000, icon: '\u2696',
-    perks: ['60-minute dedicated session', 'Comprehensive career roadmap', 'Juvenile & family counseling', 'Written summary shared post-session', 'Confirmation after payment']
+  'Detailed Guidance \u2014 \u20b91,999': {
+    fee: 1999, icon: '\u2696',
+    perks: ['2 hours dedicated session', 'Comprehensive career roadmap', 'Juvenile & family counseling', 'Written summary shared post-session', 'Confirmation after payment']
   }
 };
 
@@ -157,9 +157,9 @@ let _qrBuilt = false;
 document.querySelectorAll('.price-select').forEach(btn => {
   btn.addEventListener('click', () => {
     const rawPlan = btn.getAttribute('data-plan');
-    const fee     = parseInt(btn.getAttribute('data-fee')) || 1000;
+    const fee     = parseInt(btn.getAttribute('data-fee')) || 999;
     // Find matching plan data
-    const planKey = Object.keys(PLAN_DATA).find(k => k.includes(fee + ',000') || rawPlan.includes(fee));
+    const planKey = Object.keys(PLAN_DATA).find(k => k.includes(fee.toLocaleString('en-IN')) || rawPlan.includes(fee.toString()));
     const data    = PLAN_DATA[planKey] || { fee, icon: '📋', perks: [] };
 
     _currentPlan = { name: rawPlan, fee, icon: data.icon };
@@ -186,7 +186,7 @@ if (consultSubmitBtn) {
     e.preventDefault();
     const selectedPlan = document.getElementById('selected-plan')?.value;
     if (!selectedPlan) {
-      alert('Please select a counseling plan first (₹1,000 or ₹2,000) to proceed with payment.');
+      alert('Please select a counseling plan first (₹999 or ₹1,999) to proceed with payment.');
       return;
     }
     _currentPlan.name = selectedPlan;
@@ -242,7 +242,7 @@ function buildUPIQR() {
   if (!container) return;
   container.innerHTML = '';
   // Use plan-specific note so it appears in bank statement
-  const note = _currentPlan.fee === 2000
+  const note = _currentPlan.fee === 1999
     ? 'Detailed%20Counseling'
     : 'Basic%20Counseling';
   const upiURL = `upi://pay?pa=${UPI_ID}&pn=${UPI_NAME}&am=${_currentPlan.fee}&cu=INR&tn=${note}`;
